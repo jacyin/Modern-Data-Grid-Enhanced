@@ -19,6 +19,14 @@ A Power Apps Component Framework (PCF) data grid for Canvas Apps with filtering,
 
 For issues or feedback, please use the repository Issues tab.
 
+## Attribution
+
+This repository is derived from the original project by GorgonUK:
+
+- Original repository: https://github.com/GorgonUK/Modern-Data-Grid
+
+This fork includes additional maintenance and enhancements.
+
 ## Installation
 
 ### Enable code components for Canvas Apps
