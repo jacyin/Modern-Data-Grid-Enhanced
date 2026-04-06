@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="GUK" constructor="ModernDataGrid" version="0.0.29" display-name-key="ModernDataGrid" description-key="ModernDataGrid description" control-type="virtual">
+  <control namespace="PAFO" constructor="ModernDataGrid" version="0.0.154" display-name-key="ModernDataGrid" description-key="ModernDataGrid description" control-type="virtual">
     <!-- dataset node represents a set of entity records on CDS; allow more than one datasets -->
     <data-set name="DataSource" display-name-key="Data source">
       <!-- 'property-set' node represents a unique, configurable property that each record in the dataset must provide. -->
@@ -9,6 +9,8 @@
       <code path="index.ts" order="1" />
       <platform-library name="React" version="16.8.6" />
     </resources>
+    <property name="IsEnabled" display-name-key="Enable Grid" description-key="Enables or disables the Data Grid" of-type="TwoOptions" usage="bound" default-value="true" />
+    <property name="apiRequestUrl" display-name-key="API Request URL" description-key="1Staff Data url - look up to 1Staff Data Url" of-type="SingleLine.Text" usage="bound" />
     <property name="DisplayHeader" display-name-key="Display Header" description-key="Whether to display the header of the data grid" of-type="TwoOptions" usage="bound" default-value="true" />
     <property name="HeaderText" display-name-key="Header Text" description-key="The text displayed as the header of the data grid" of-type="SingleLine.Text" usage="bound" />
     <property name="DisplaySearch" display-name-key="Display Search" description-key="Enables or disables the display of a search input" of-type="TwoOptions" usage="bound" />
@@ -16,8 +18,15 @@
     <property name="EmptyMessage" display-name-key="Empty Message" description-key="The message shown when no records are available" of-type="SingleLine.Text" usage="bound" default-value="No records found" />
     <property name="SelectionMode" display-name-key="Selection Mode" description-key="Specifies the selection mode (e.g., single or multiple)" of-type="SingleLine.Text" usage="bound" default-value="multiple" />
     <property name="AllowSorting" display-name-key="Allow Sorting" description-key="Enables or disables sorting on columns" of-type="TwoOptions" usage="bound" />
+    <property name="DefaultSort" display-name-key="Default Sort" description-key="Default sort applied on load. Format: fieldName, fieldName asc, or fieldName desc" of-type="SingleLine.Text" usage="bound" />
     <property name="AllowFiltering" display-name-key="Allow Filtering" description-key="Enables or disables filtering on columns" of-type="TwoOptions" usage="bound" />
-    <property name="IsEnabled" display-name-key="Enable" description-key="Enables or disables the Data Grid" of-type="TwoOptions" usage="bound" default-value="true" />
-    <property name="FieldConfigurations" display-name-key="Field Configurations" description-key="Allows custom configurations to be set on column values" of-type="SingleLine.TextArea" usage="bound" default-value="CurrencyField=currency:GBP, DateField=dateFormat:yyyy-MM-dd, DecimalField=decimalPlaces:2, BooleanField=trueLabel:Yes|falseLabel:No" />
+    <property name="FieldConfigurations" display-name-key="Field Configurations" description-key="Allows custom configurations to be set on column values" of-type="SingleLine.TextArea" usage="bound" default-value="CurrencyField=currency:USD, DateField=dateFormat:yyyy-MM-dd, DecimalField=decimalPlaces:2, BooleanField=trueLabel:Yes|falseLabel:No, LinkField=linkTemplate:{baseurl}/account/{number}.pdf|linkCondition:field1:value1;;field2,value2|label:View" />
+    <property name="showAggregates" display-name-key="Show Aggregates" description-key="Display aggregate row in header" of-type="TwoOptions" usage="bound" default-value="false" />
+    <property name="aggregateConfig" display-name-key="Aggregate Configuration" description-key="JSON configuration for column aggregates" of-type="SingleLine.Text" usage="bound" />
+    <property name="jsonData" display-name-key="Collection Data (JSON)" description-key="Pass the full collection as JSON string using JSON(colAllInvoices)" of-type="SingleLine.TextArea" usage="bound" />
+    <property name="ShrinkToFit" display-name-key="Shrink To Fit" description-key="When enabled, the grid height collapses to fit its content instead of filling the allocated container height" of-type="TwoOptions" usage="bound" default-value="false" />
+    <property name="ContentHeight" display-name-key="Content Height" description-key="Actual rendered height of the grid in pixels. Use in Canvas Height formula: GridName.ContentHeight" of-type="Whole.None" usage="output" />
+    <property name="EventName" display-name-key="Event Name" description-key="Name of the last event fired by the grid (e.g. rowClick). Use in OnChange to react to row clicks." of-type="SingleLine.Text" usage="output" />
+    <property name="SelectedRowData" display-name-key="Selected Row Data" description-key="JSON string of the clicked row data. Parse with ParseJSON() in Canvas." of-type="SingleLine.TextArea" usage="output" />
   </control>
 </manifest>

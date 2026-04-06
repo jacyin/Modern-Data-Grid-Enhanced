@@ -1,11 +1,721 @@
-.p-icon-field.p-icon-field-left {
-    Margin-right: 18px;
+/* ============================================================
+   D365 / Fluent UI – Modern Data Grid theme overrides
+   ============================================================ */
+
+/* --- Base font -------------------------------------------- */
+.card,
+.p-datatable {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 13px;
+    color: #323130;
 }
 
-.p-icon-field-left>.p-inputtext {
+/* --- Remove card chrome ----------------------------------- */
+.card {
+    background: #ffffff;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+}
 
+/* --- Table wrapper ---------------------------------------- */
+.p-datatable .p-datatable-wrapper {
+    border: none;
+    overflow-x: auto !important;
+}
+
+/* --- Column headers --------------------------------------- */
+.p-datatable .p-datatable-thead > tr > th {
+    background: #ffffff !important;
+    color: #605e5c !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    border: none !important;
+    border-bottom: 1.5px solid #e1dfdd !important;
+    padding: 8px 12px !important;
+    white-space: nowrap;
+}
+
+.p-datatable .p-datatable-thead > tr > th:hover {
+    background: #f3f2f1 !important;
+    color: #201f1e !important;
+}
+
+/* Sort icon colour */
+.p-datatable .p-sortable-column .p-sortable-column-icon {
+    color: #605e5c !important;
+    font-size: 11px;
+}
+.p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
+    color: #0078d4 !important;
+}
+.p-datatable .p-sortable-column.p-highlight {
+    background: #ffffff !important;
+    color: #0078d4 !important;
+}
+
+/* Column header content: keep title+sort+filter tightly together at left.
+   Use a 4px gap between title and sort, 2px between sort and filter funnel. */
+.p-datatable table thead tr th .p-column-header-content {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;          /* manage spacing via margins below */
+    overflow: hidden;
+    width: fit-content !important;  /* shrink to content so icons stay next to title */
+}
+
+/* Column title */
+.p-column-title {
+    padding-right: 0;
+    margin-right: 3px;          /* tight gap between title and sort icon */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+/* Sort icon — sits right after title */
+.p-datatable .p-sortable-column-icon {
+    flex-shrink: 0;
+    margin-left: 0 !important;
+    margin-right: 3px !important;  /* 3px gap between sort and filter funnel */
+    width: 14px !important;
+    height: 14px !important;
+}
+.p-datatable .p-sortable-column-icon svg {
+    width: 12px !important;
+    height: 12px !important;
+}
+
+/* --- Filter menu button + icon ---------------------------- */
+.p-datatable .p-datatable-thead > tr > th .p-column-filter-menu-button,
+.p-datatable .p-datatable-thead > tr > th .p-column-filter-menu-button:hover {
+    color: #8a8886;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px;
+    padding: 0;
+    flex-shrink: 0;
+    margin-left: 0 !important;   /* override lara margin-left:auto that causes gap */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+}
+.p-datatable .p-datatable-thead > tr > th .p-column-filter-menu-button:hover {
+    background: #edebe9 !important;
+    color: #605e5c !important;
+}
+/* Filter funnel SVG — 12px to match sort icon */
+.p-datatable .p-column-filter-menu-button svg,
+.p-datatable .p-column-filter-menu-button .p-icon {
+    width: 12px !important;
+    height: 12px !important;
+}
+.p-datatable .p-column-filter-menu-button.p-column-filter-menu-button-active {
+    color: #0078d4 !important;
+    background: transparent !important;
+}
+.p-datatable .p-column-filter-menu-button.p-column-filter-menu-button-active svg {
+    color: #0078d4 !important;
+}
+
+/* --- Body rows -------------------------------------------- */
+.p-datatable .p-datatable-tbody > tr {
+    background: #ffffff;
+    border: none;
+    cursor: default !important;
+    transition: background 80ms ease;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+    border: none !important;
+    border-bottom: 1px solid #edebe9 !important;
+    padding: 7px 12px !important;
+    font-size: 13px;
+    color: #323130;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Row hover */
+.p-datatable .p-datatable-tbody > tr:hover > td {
+    background: #f3f2f1 !important;
+}
+
+/* Row selected */
+.p-datatable .p-datatable-tbody > tr.p-highlight > td {
+    background: #deecf9 !important;
+    color: #201f1e !important;
+}
+
+/* Striped rows — keep subtle or remove */
+.p-datatable.p-datatable-striped .p-datatable-tbody > tr:nth-child(even) {
+    background: #faf9f8;
+}
+
+/* --- Links inside cells ----------------------------------- */
+.p-datatable a {
+    color: #0078d4;
+    text-decoration: none;
+    font-weight: 600;
+}
+.p-datatable a:hover {
+    text-decoration: underline;
+    color: #106ebe;
+}
+
+/* --- Global filter / search bar --------------------------- */
+.p-icon-field.p-icon-field-left {
+    margin-right: 8px;
+}
+
+.p-icon-field-left > .p-inputtext {
     padding-left: 2rem !important;
+    padding-right: 0 !important;
+    border-radius: 2px;
+    border: 1px solid #8a8886;
+    font-size: 13px;
+    height: 32px;
+}
+.p-icon-field-left > .p-inputtext:focus {
+    box-shadow: none;
+    border-color: #0078d4;
+    outline: 2px solid transparent;
+}
 
-    padding-right: 0px !important;
+/* --- Paginator -------------------------------------------- */
+.p-datatable .p-paginator {
+    background: #ffffff;
+    border: none;
+    border-top: 1px solid #edebe9;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: #323130;
+    justify-content: flex-start;
+}
 
+.p-datatable .p-paginator .p-paginator-page,
+.p-datatable .p-paginator .p-paginator-first,
+.p-datatable .p-paginator .p-paginator-prev,
+.p-datatable .p-paginator .p-paginator-next,
+.p-datatable .p-paginator .p-paginator-last {
+    min-width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 2px;
+    color: #323130;
+    background: transparent;
+    font-size: 13px;
+    margin: 0 1px;
+}
+
+.p-datatable .p-paginator .p-paginator-page:hover,
+.p-datatable .p-paginator .p-paginator-first:hover,
+.p-datatable .p-paginator .p-paginator-prev:hover,
+.p-datatable .p-paginator .p-paginator-next:hover,
+.p-datatable .p-paginator .p-paginator-last:hover {
+    background: #f3f2f1;
+    color: #201f1e;
+}
+
+.p-datatable .p-paginator .p-paginator-page.p-highlight {
+    background: #deecf9 !important;
+    color: #0078d4 !important;
+    border: 1px solid #c7e0f4 !important;
+    font-weight: 600;
+}
+
+.p-datatable .p-paginator .p-dropdown {
+    border: 1px solid #8a8886;
+    border-radius: 2px;
+    height: 30px;
+    font-size: 13px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+.p-datatable .p-paginator .p-dropdown .p-dropdown-label {
+    font-size: 13px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #323130;
+    padding: 4px 8px;
+    line-height: 22px;
+}
+.p-datatable .p-paginator .p-dropdown .p-dropdown-trigger {
+    width: 24px;
+}
+.p-datatable .p-paginator .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    font-size: 13px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #323130;
+    padding: 6px 12px;
+}
+.p-datatable .p-paginator .p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover {
+    background: #f3f2f1;
+}
+.p-datatable .p-paginator .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background: #deecf9;
+    color: #0078d4;
+}
+
+.p-datatable .p-paginator .p-paginator-current {
+    color: #605e5c;
+    font-size: 12px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* --- Header toolbar (global filter + title row) ----------- */
+.p-datatable .p-datatable-header {
+    background: #ffffff;
+    border: none;
+    border-bottom: 1px solid #edebe9;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: #323130;
+}
+
+/* --- Footer aggregate row --------------------------------- */
+.p-datatable .p-datatable-tfoot > tr > td {
+    background: #faf9f8 !important;
+    color: #323130 !important;
+    font-weight: 600;
+    font-size: 13px;
+    border: none !important;
+    border-top: 1.5px solid #e1dfdd !important;
+    padding: 7px 12px !important;
+}
+
+/* --- Checkbox --------------------------------------------- */
+.p-datatable .p-checkbox .p-checkbox-box {
+    border: 1.5px solid #8a8886;
+    border-radius: 2px;
+    background: #ffffff;
+    width: 18px;
+    height: 18px;
+    transition: border-color 80ms, background 80ms;
+}
+.p-datatable .p-checkbox .p-checkbox-box.p-highlight {
+    background: #0078d4 !important;
+    border-color: #0078d4 !important;
+}
+.p-datatable .p-checkbox .p-checkbox-box:hover {
+    border-color: #0078d4 !important;
+}
+
+/* --- Filter overlay panel --------------------------------- */
+.p-column-filter-overlay {
+    border-radius: 2px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.14);
+    border: 1px solid #e1dfdd;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 13px;
+    min-width: 220px !important;
+    max-width: 260px !important;
+}
+
+/* Operator row (Match All / Match Any) */
+.p-column-filter-overlay .p-column-filter-operator {
+    padding: 8px 10px 4px 10px;
+    border-bottom: none;
+    background: #ffffff;
+}
+.p-column-filter-overlay .p-column-filter-operator .p-dropdown {
+    width: 100%;
+    height: 28px;
+    border: 1px solid #8a8886;
+    border-radius: 2px;
+    font-size: 13px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+.p-column-filter-overlay .p-column-filter-operator .p-dropdown .p-dropdown-label {
+    font-size: 13px;
+    padding: 3px 8px;
+    line-height: 20px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #323130;
+}
+
+/* Each constraint (operator dropdown + value input) */
+.p-column-filter-overlay .p-column-filter-constraints {
+    padding: 4px 10px;
+}
+.p-column-filter-overlay .p-column-filter-constraint {
+    padding: 4px 0;
+    border-bottom: none;
+}
+.p-column-filter-overlay .p-column-filter-constraint .p-dropdown {
+    width: 100%;
+    height: 28px;
+    border: 1px solid #8a8886;
+    border-radius: 2px;
+    font-size: 13px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin-bottom: 4px;
+}
+.p-column-filter-overlay .p-column-filter-constraint .p-dropdown .p-dropdown-label {
+    font-size: 13px;
+    padding: 3px 8px;
+    line-height: 20px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #323130;
+}
+.p-column-filter-overlay .p-column-filter-constraint .p-inputtext {
+    width: 100%;
+    height: 28px;
+    border: 1px solid #8a8886;
+    border-radius: 2px;
+    font-size: 13px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    padding: 3px 8px;
+    color: #323130;
+}
+.p-column-filter-overlay .p-column-filter-constraint .p-inputtext:focus {
+    box-shadow: none;
+    border-color: #0078d4;
+    outline: none;
+}
+.p-column-filter-overlay .p-column-filter-constraint .p-inputnumber {
+    width: 100%;
+}
+.p-column-filter-overlay .p-column-filter-constraint .p-inputnumber .p-inputtext {
+    width: 100%;
+}
+
+/* Remove constraint button — show full "Remove" label */
+.p-column-filter-overlay .p-column-filter-constraint .p-column-filter-remove-button {
+    width: auto !important;
+    min-width: 54px;
+    height: 22px;
+    padding: 0 6px;
+    font-size: 12px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #605e5c;
+    background: transparent;
+    border: none;
+    border-radius: 2px;
+    white-space: nowrap;
+}
+.p-column-filter-overlay .p-column-filter-constraint .p-column-filter-remove-button:hover {
+    background: #f3f2f1;
+    color: #201f1e;
+}
+/* Show icon + gap + text in remove button — constrain icon size */
+.p-column-filter-overlay .p-column-filter-constraint .p-column-filter-remove-button {
+    gap: 5px;
+}
+.p-column-filter-overlay .p-column-filter-constraint .p-column-filter-remove-button .p-button-icon,
+.p-column-filter-overlay .p-column-filter-constraint .p-column-filter-remove-button .p-icon {
+    font-size: 11px !important;
+    width: 11px !important;
+    height: 11px !important;
+    flex-shrink: 0;
+}
+
+/* Hide the + icon on add-rule button — label already contains the + text */
+.p-column-filter-overlay .p-column-filter-add-rule .p-column-filter-add-button .p-button-icon,
+.p-column-filter-overlay .p-column-filter-add-rule .p-column-filter-add-button .p-icon {
+    display: none !important;
+}
+
+/* Add Rule button */
+.p-column-filter-overlay .p-column-filter-add-rule {
+    padding: 2px 10px 6px 10px;
+}
+.p-column-filter-overlay .p-column-filter-add-rule .p-column-filter-add-button {
+    font-size: 12px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #0078d4;
+    background: transparent;
+    border: none;
+    padding: 2px 0;
+    height: auto;
+    font-weight: 400;
+    box-shadow: none;
+}
+.p-column-filter-overlay .p-column-filter-add-rule .p-column-filter-add-button:hover {
+    text-decoration: underline;
+    background: transparent;
+}
+
+/* Clear / Apply button bar */
+.p-column-filter-overlay .p-column-filter-buttonbar {
+    padding: 6px 10px 8px 10px;
+    border-top: 1px solid #edebe9;
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+    background: #faf9f8;
+}
+/* Clear button — outlined */
+.p-column-filter-overlay .p-column-filter-buttonbar .p-button-outlined {
+    height: 28px;
+    padding: 0 14px;
+    font-size: 13px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    border: 1px solid #8a8886;
+    border-radius: 2px;
+    color: #323130;
+    background: #ffffff;
+    box-shadow: none;
+}
+.p-column-filter-overlay .p-column-filter-buttonbar .p-button-outlined:hover {
+    background: #f3f2f1;
+    border-color: #323130;
+}
+/* Apply button — filled */
+.p-column-filter-overlay .p-column-filter-buttonbar .p-button:not(.p-button-outlined) {
+    height: 28px;
+    padding: 0 14px;
+    font-size: 13px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    border: 1px solid #0078d4;
+    border-radius: 2px;
+    background: #0078d4;
+    color: #ffffff;
+    box-shadow: none;
+}
+.p-column-filter-overlay .p-column-filter-buttonbar .p-button:not(.p-button-outlined):hover {
+    background: #106ebe;
+    border-color: #106ebe;
+}
+
+/* Dropdown panels inside filter overlay */
+.p-column-filter-overlay .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    font-size: 13px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #323130;
+    padding: 5px 10px;
+}
+.p-column-filter-overlay .p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover {
+    background: #f3f2f1;
+}
+.p-column-filter-overlay .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background: #deecf9;
+    color: #0078d4;
+}
+
+/* ============================================================
+   Global dropdown panel (renders as body portal — targets
+   both the operator/constraint dropdowns inside filter overlay
+   and the paginator rows-per-page dropdown)
+   ============================================================ */
+.p-dropdown-panel {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 13px;
+    border: 1px solid #e1dfdd;
+    border-radius: 2px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    font-size: 13px !important;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+    color: #323130 !important;
+    padding: 5px 10px !important;
+    line-height: 1.4 !important;
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover {
+    background: #f3f2f1 !important;
+    color: #201f1e !important;
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background: #deecf9 !important;
+    color: #0078d4 !important;
+}
+.p-dropdown-panel .p-dropdown-header {
+    padding: 6px 10px;
+    font-size: 13px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* --- Empty message ---------------------------------------- */
+.p-datatable .p-datatable-emptymessage > td {
+    color: #605e5c;
+    font-style: italic;
+    border: none !important;
+}
+
+/* ============================================================
+   Calendar / date picker (renders as body portal)
+   ============================================================ */
+.p-datepicker {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+    font-size: 13px !important;
+    border: 1px solid #e1dfdd;
+    border-radius: 2px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    padding: 4px !important;
+    min-width: 200px !important;
+    width: auto !important;
+}
+
+/* Month/year header */
+.p-datepicker .p-datepicker-header {
+    padding: 4px 6px !important;
+    background: #ffffff;
+    border-bottom: 1px solid #edebe9;
+    font-size: 13px !important;
+}
+.p-datepicker .p-datepicker-header .p-datepicker-title {
+    font-size: 13px !important;
+    font-weight: 600;
+    color: #323130;
+    gap: 2px;
+}
+/* Month and year label buttons inside the title */
+.p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-month,
+.p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-year,
+.p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-decade {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+    color: #323130 !important;
+    padding: 2px 4px !important;
+    height: auto !important;
+    background: transparent;
+    border: none;
+    border-radius: 2px;
+}
+.p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-month:hover,
+.p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-year:hover,
+.p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-decade:hover {
+    background: #f3f2f1 !important;
+    color: #201f1e !important;
+}
+/* Prev/next nav buttons */
+.p-datepicker .p-datepicker-header .p-datepicker-prev,
+.p-datepicker .p-datepicker-header .p-datepicker-next {
+    width: 24px !important;
+    height: 24px !important;
+    color: #605e5c;
+    background: transparent;
+    border: none;
+    border-radius: 2px;
+}
+.p-datepicker .p-datepicker-header .p-datepicker-prev:hover,
+.p-datepicker .p-datepicker-header .p-datepicker-next:hover {
+    background: #f3f2f1 !important;
+}
+
+/* Year / decade selection panel */
+.p-datepicker .p-monthpicker,
+.p-datepicker .p-yearpicker {
+    margin: 4px 0 2px 0;
+}
+.p-datepicker .p-yearpicker .p-yearpicker-year,
+.p-datepicker .p-monthpicker .p-monthpicker-month {
+    font-size: 13px !important;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+    color: #323130 !important;
+    padding: 6px 4px !important;
+    border-radius: 2px;
+}
+.p-datepicker .p-yearpicker .p-yearpicker-year:hover,
+.p-datepicker .p-monthpicker .p-monthpicker-month:hover {
+    background: #f3f2f1 !important;
+}
+.p-datepicker .p-yearpicker .p-yearpicker-year.p-highlight,
+.p-datepicker .p-monthpicker .p-monthpicker-month.p-highlight {
+    background: #deecf9 !important;
+    color: #0078d4 !important;
+    font-weight: 600 !important;
+}
+
+/* Day-of-week labels */
+.p-datepicker table thead th {
+    font-size: 11px !important;
+    font-weight: 600;
+    color: #605e5c;
+    padding: 2px 2px !important;
+    text-align: center;
+    width: 26px !important;
+}
+
+/* Day cells */
+.p-datepicker table td {
+    padding: 1px !important;
+}
+.p-datepicker table td > span {
+    width: 26px !important;
+    height: 26px !important;
+    line-height: 26px !important;
+    font-size: 13px !important;
+    border-radius: 2px;
+    color: #323130;
+}
+.p-datepicker table td > span:hover {
+    background: #f3f2f1 !important;
+}
+.p-datepicker table td > span.p-highlight {
+    background: #0078d4 !important;
+    color: #ffffff !important;
+}
+.p-datepicker table td.p-datepicker-today > span {
+    background: #deecf9;
+    color: #0078d4;
+    font-weight: 600;
+}
+.p-datepicker table td.p-datepicker-today > span.p-highlight {
+    background: #0078d4 !important;
+    color: #ffffff !important;
+}
+
+/* Calendar input + icon button inside filter overlay */
+.p-column-filter-overlay .p-calendar {
+    width: 100%;
+}
+.p-column-filter-overlay .p-calendar .p-inputtext {
+    width: 100%;
+    height: 28px;
+    padding: 3px 8px;
+    font-size: 13px;
+    border: 1px solid #8a8886;
+    border-right: none;
+    border-radius: 2px 0 0 2px;
+}
+.p-column-filter-overlay .p-calendar .p-datepicker-trigger {
+    width: 28px !important;
+    height: 28px !important;
+    background: #f3f2f1;
+    border: 1px solid #8a8886;
+    border-left: none;
+    border-radius: 0 2px 2px 0;
+    color: #605e5c;
+    padding: 0;
+}
+.p-column-filter-overlay .p-calendar .p-datepicker-trigger:hover {
+    background: #edebe9 !important;
+}
+.p-column-filter-overlay .p-calendar .p-datepicker-trigger svg,
+.p-column-filter-overlay .p-calendar .p-datepicker-trigger .p-icon {
+    width: 13px !important;
+    height: 13px !important;
+}
+
+/* --- Paginator: right-aligned by default; space-between only when aggregates present --- */
+.mdg-paginator {
+    justify-content: flex-end !important;
+}
+.mdg-paginator.mdg-paginator-aggregates {
+    justify-content: space-between !important;
+}
+
+/* --- Clickable rows --------------------------------------- */
+.p-datatable .p-datatable-tbody > tr.mdg-row-clickable {
+    cursor: pointer;
+}
+.p-datatable .p-datatable-tbody > tr.mdg-row-clickable:hover {
+    background: #f3f2f1 !important;
+}
+
+/* --- Numeric column headers: right-aligned ---------------- */
+.mdg-col-numeric .p-column-header-content {
+    width: 100% !important;
+    justify-content: flex-end !important;
 }

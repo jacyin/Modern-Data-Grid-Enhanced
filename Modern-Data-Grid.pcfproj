@@ -11,6 +11,7 @@
     <Name>Modern-Data-Grid</Name>
     <ProjectGuid>d9a1a13f-23ad-4090-8c5b-8ffd1f911b3c</ProjectGuid>
     <OutputPath>$(MSBuildThisFileDirectory)out\controls</OutputPath>
+    <PcfBuildMode>production</PcfBuildMode>
   </PropertyGroup>
 
   <PropertyGroup>

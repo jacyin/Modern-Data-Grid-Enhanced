@@ -4,6 +4,7 @@
   "description": "Project containing your PowerApps Component Framework (PCF) control.",
   "scripts": {
     "build": "pcf-scripts build",
+    "build:prod": "pcf-scripts build --buildMode production",
     "clean": "pcf-scripts clean",
     "lint": "pcf-scripts lint",
     "lint:fix": "pcf-scripts lint fix",
@@ -21,8 +22,8 @@
     "@typescript-eslint/parser": "^7.18.0",
     "eslint": "^8.57.0",
     "eslint-plugin-promise": "^7.1.0",
-    "pcf-scripts": "^1",
-    "pcf-start": "^1",
+    "pcf-scripts": "~1.25.0",
+    "pcf-start": "~1.25.0",
     "typescript": "^4.9.5"
   },
   "dependencies": {

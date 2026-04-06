@@ -2,34 +2,34 @@
 <ImportExportXml version="9.1.0.643" SolutionPackageVersion="9.1" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <!-- Unique Name of Cds Solution-->
-    <UniqueName>ModernDataGrid</UniqueName>
+    <UniqueName>Solution</UniqueName>
     <LocalizedNames>
       <!-- Localized Solution Name in language code -->
-      <LocalizedName description="ModernDataGrid" languagecode="1033" />
+      <LocalizedName description="Solution" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.15</Version>
+    <Version>1.0.0.74</Version>
     <!-- Solution Package Type: Unmanaged(0)/Managed(1)/Both(2)-->
     <Managed>2</Managed>
     <Publisher>
       <!-- Unique Publisher Name of Cds Solution -->
-      <UniqueName>gorgonuk</UniqueName>
+      <UniqueName>pafo</UniqueName>
       <LocalizedNames>
         <!-- Localized Cds Publisher Name in language code-->
-        <LocalizedName description="gorgonuk" languagecode="1033" />
+        <LocalizedName description="PA" languagecode="1033" />
       </LocalizedNames>
       <Descriptions>
         <!-- Description of Cds Publisher in language code -->
-        <Description description="gorgonuk" languagecode="1033" />
+        <Description description="PA" languagecode="1033" />
       </Descriptions>
       <EMailAddress xsi:nil="true">
       </EMailAddress>
       <SupportingWebsiteUrl xsi:nil="true">
       </SupportingWebsiteUrl>
       <!-- Customization Prefix for the Cds Publisher-->
-      <CustomizationPrefix>guk</CustomizationPrefix>
+      <CustomizationPrefix>pafo</CustomizationPrefix>
       <!-- Derived Option Value Prefix for the Customization Prefix of Cds Publisher -->
-      <CustomizationOptionValuePrefix>44888</CustomizationOptionValuePrefix>
+      <CustomizationOptionValuePrefix>45582</CustomizationOptionValuePrefix>
       <Addresses>
         <!-- Address of the Publisher-->
         <Address>

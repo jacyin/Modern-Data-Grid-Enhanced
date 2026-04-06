@@ -18,6 +18,18 @@
 
 # Visual Studio cache/options directory
 /.vs
+/.vscode
 
 # macos
 .DS_Store
+
+# local solution extraction/sanitization artifacts
+/1StaffExtract/
+/tmp_*/
+/orig_extract_*/
+/solution_simple_*/
+/1StaffExtract_ConnectorFree/
+/canvas-temp/
+
+# generated solution/control packages
+/*.zip
